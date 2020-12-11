@@ -5,10 +5,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 task_list = Queue()
 
-
 class wb_commit(object):
     def __init__(self):
-        self.url = '#'
+        self.url = '#={}&t_id={}'
 
     def add_task(self, t_id):
         task_list.put(self.url.format(int(time.time() * 1000), t_id))
@@ -25,6 +24,7 @@ if __name__ == '__main__':
     for i in range(1, 100000):
         r = pool.submit(start.add_task, i)
 
+    print(task_list.qsize())
     print(task_list.get())
     while not task_list.empty():
         pool.submit(start.handle_task, task_list.get())
