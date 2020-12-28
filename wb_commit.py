@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 task_list = Queue()
 
+
 class wb_commit(object):
     def __init__(self):
         self.url = '#={}&t_id={}'
